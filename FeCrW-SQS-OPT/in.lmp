@@ -1,0 +1,119 @@
+# Monte Carlo relaxation of perturbed 3d lattice
+clear
+
+# ----- Structure settings -----
+units           metal
+atom_style      atomic
+dimension       3
+boundary        p p p
+read_data       data.in
+replicate       1 1 1
+
+# ----- Potential settings (MEAM)-----
+# -----HEA (Co-Ni-Cr-Fe-Mn)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/CoNiCrFeMn.HEA.library.meam Co Ni Cr Fe Mn ./meam/CoNiCrFeMn.HEA.meam Co Ni Cr Fe
+# -----(Al-Si-Mg-Cu-Fe)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/Jelinek_2012_meamf AlS SiS MgS CuS FeS ./meam/Jelinek_2012_meam.alsimgcufe AlS SiS MgS CuS
+# -----(Fe-Mn-Si-C)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/CFeMnSi.library.meam Fe Mn Si C ./meam/CFeMnSi.meam Fe Mn Si C
+# -----(Mg-Al-Zn)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/MgAlZn.library.meam Mg Al Zn ./meam/MgAlZn.parameter.meam Mg Al Zn
+# -----(Fe-Ti-C)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/FeTiC.library.meam Fe Ti C ./meam/FeTiC.meam Fe Ti C
+# -----(V-Ni-Ti)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/VNiTi.library.meam V Ni Ti ./meam/VNiTi.meam V Ni Ti
+# -----(AgTaO3)
+#pair_style      meam/c
+#pair_coeff      * * ../../potentials/meam/AgTaO3.library.meam Ag Ta O ./meam/AgTaO3.meam Ag Ta O
+
+# ----- Potential settings (EAM)-----
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/FeNiCrCoCu-heafixed.setfl Co Ni Cr Fe
+# -----(Cu-Ag-Au)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/CuAgAu_Zhou04.eam.alloy Cu Ag Au
+# -----(Fe-Cu-Ni)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/FeCuNi.eam.alloy Fe Cu Ni
+# -----(Al-Mn-Pd)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/AlMnPd_Schopf_2012.lammps.EAM_CORRECT Al Mn Pd
+# -----(Ni-Al-Co)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/Mishin_updated-Ni-Al-Co-2013.eam.alloy Ni Al Co
+# -----(Nb-Ti-Al)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/Farkas_Nb-Ti-Al_1996.eam.alloy Nb Ti Al
+# -----(Ni-Al-H)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/NiAlH_jea.eam.alloy Ni Al H
+# -----(Pd-Ag-H)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/PdAgH_HybridPd3Ag.eam.alloy Pd Ag H
+# -----(W-H-He)
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/eam/potential-WHHe-EAM1.eam.alloy W H He
+# -----(Fe-Ni-Cr) (FCC)
+#pair_style      eam/fs
+#pair_coeff      * * ../../potentials/eam/Fe-Ni-Cr_fcc.eam.fs Fe Ni Cr
+# -----(Fe-Cr-W)
+pair_style      hybrid/overlay eam/alloy eam/fs
+pair_coeff      * * eam/alloy ../../potentials/eam/FeCrW_d.eam.alloy Fe Cr W
+pair_coeff      * * eam/fs    ../../potentials/eam/FeCrW_s.eam.fs Fe Cr W
+
+# ----- Potential settings (ADP)-----
+#pair_style      adp
+#pair_coeff      * * ../../potentials/adp/Si_Au_Al.adp.txt Si Au Al
+
+# ----- Potential settings (COMB)-----
+#pair_style      eam/alloy
+#pair_coeff      * * ../../potentials/comb3/ffield.comb3.NiAlO Ni Al O
+
+# ----- Potential settings (BOP)-----
+#pair_style      bop
+#pair_coeff      * * ../../potentials/bop/CdZnTe_v2.bop.table Cd Zn Te
+
+# ----- Potential settings (SW)-----
+#pair_style      sw
+#pair_coeff      * * ../../potentials/sw/InGaN.psw In Ga N
+# -----(Cd-Te-Zn-Se-Hg-S)
+#pair_style      sw
+#pair_coeff      * * ../../potentials/sw/CdTeZnSeHgS0.sw Cd Te Zn
+
+# ----- Potential settings (tersoff)-----
+#pair_style      tersoff
+#pair_coeff      * * ../../potentials/tersoff/BNC.tersoff B N C
+
+variable        e equal pe
+
+# ----- Output setting -----
+#dump            d1 all cfg 100 cfg/run.*.cfg mass type xs ys zs id type
+#dump_modify     d1 element Fe Cr W
+#dump_modify     d1 element Co Ni Cr Fe # Co-Ni-Cr-Fe-Mn
+#dump_modify     d1 element Al Si Mg Cu   # Al-Si-Mg-Cu-Fe
+#dump_modify     d1 element Fe Mn Si C   # Fe-Mn-Si-C
+
+# ----- Check equilibriation setting -----
+#variable        energy equal etotal
+#variable        temperature equal temp
+#fix             fout1 all ave/time 1 100 100 v_energy v_temperature file out_energy.txt
+
+# ----- Relax calculation (0 K) -----
+thermo_style    custom step etotal temp lx vol press
+thermo          10
+fix             f1 all box/relax iso 0.0
+minimize        1.0e-10 0.0 10000 100000
+unfix           f1
+
+#run             1
+
+print           "  Total Energy [eV] = $e"
+
+# ----- Output restart data -----
+write_data data.in.restart
