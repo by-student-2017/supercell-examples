@@ -5,7 +5,7 @@ Supercell should be installed. xTB should be in PATH. Run script df_cfg_xtb.bash
 
 The command used to generate supercells in this case is:
 
-supercell -i CuAgAu.cif -s 1x1x2 -m -v 2 -o [OUTPUT DIRECTORY]/CuAgAu_1x1x2 &
+supercell -i GaInAs.cif -s 1x1x2 -m -v 2 -o [OUTPUT DIRECTORY]/GaInAs_1x1x2 &
 
 Note that the [OUTPUT DIRECTORY] should exist when running the command.
 The analysis is then performed with the xTB program.

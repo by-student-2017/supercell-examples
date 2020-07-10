@@ -74,7 +74,7 @@ es5=`gawk '{ sum += $5 }; END { print sum }' tmp2`
 es6=`gawk '{ sum += $6 }; END { print sum }' tmp2`
 es7=`gawk '{ sum += $7 }; END { print sum }' tmp2`
 es8=`gawk '{ sum += $8 }; END { print sum }' tmp2`
-echo "#Name of cif file | Total energy [eV] | (N(Ei)/N(Emin))*100 at 298 K [%] | 673 K | 873 K | 1073 K | 1273 K | 1873 K" > result.txt
+echo "#Name of cif file | Total energy [eV] | (N(Ei)/SUM(N(Ei)))*100 at 298 K [%] | 673 K | 873 K | 1073 K | 1273 K | 1873 K" > result.txt
 awk -v esu3=$es3 -v esu4=$es4 -v esu5=$es5 -v esu6=$es6 -v esu7=$es7 -v esu8=$es8 '{printf "%s  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f \n",$1,$2,($3/esu3*100),($4/esu4*100),($5/esu5*100),($6/esu6*100),($7/esu7*100),($8/esu8*100)}' tmp2 >> result.txt
 cat result.txt
 rm tmp1 tmp2
