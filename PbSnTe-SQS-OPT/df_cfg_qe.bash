@@ -29,6 +29,7 @@ for i in "${cells[@]}"
 do
   cd ${cur_path}
   sqsf="${cur_path}/SQS-$i"
+  msda="${cur_path}/SQS-MSDA-$i"
   echo -ne "cfg" > $sqsf
   for k in "${latuni[@]}"
   do 
@@ -42,6 +43,7 @@ do
     name=`basename $j .cif`
 
     echo -n $j >> $sqsf
+    echo -n $j >> $msdaf
 
     cd ${cur_path}
     rm -rf $pth
@@ -60,10 +62,13 @@ do
       cat pw_tmp.vc-relax.in | awk -v lnx=$ln -v t=$k '{if(NR==lnx){printf "  A = %9.5f \n",$3*t}else{print $0}}' > pw.in
       mpirun -np ${ncpu} ${PRG_qe} < pw.in | tee pw.out
       cr_Ry=`grep "  total energy  " pw.out | tail -1 | sed 's/.*=//g' | sed 's/Ry//g'`
-      cr=`echo "${cr_Ry}*13.6058" | bc -l | awk '{printf "%15.10f",$0}'`
+      cr=`echo "${cr_Ry}*13.6058" | bc -l | awk '{printf "%15.5f",$0}'`
       echo -ne "\t$cr" >> $sqsf
+      cm=`${cur_path}/MSDA.bash`
+      echo -ne "\t$cf $cm" >> $msdaf
     done
     echo "" >> $sqsf
+    echo "" >> $msdaf
   done 
 done
 
@@ -83,4 +88,9 @@ es8=`gawk '{ sum += $8 }; END { print sum }' tmp2`
 echo "#Name of cif file | Total energy [eV] | (N(Ei)/SUM(N(Ei)))*100 at 298 K [%] | 673 K | 873 K | 1073 K | 1273 K | 1873 K" > result.txt
 awk -v esu3=$es3 -v esu4=$es4 -v esu5=$es5 -v esu6=$es6 -v esu7=$es7 -v esu8=$es8 '{printf "%s  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f \n",$1,$2,($3/esu3*100),($4/esu4*100),($5/esu5*100),($6/esu6*100),($7/esu7*100),($8/esu8*100)}' tmp2 >> result.txt
 cat result.txt
+#
+echo "---------------------------------------------------------------"
+cat $msdaf | sort -k2 -g > result_msda.txt
+cat result_msda.txt
+#
 rm tmp1 tmp2
