@@ -1,6 +1,23 @@
 # supercell-examples
 
 
+## Install
+0. sudo apt update
+  sudo apt install -y git wget openbabel
+  cd ~
+1. git clone https://github.com/orex/supercell.git
+2. cd supercell
+3. wget https://orex.github.io/supercell/exe/supercell-linux.tar.gz
+4. tar zxvf supercell-linux.tar.gz
+
+## Environment settings
+1. echo ' ' >> ~/.bashrc
+  echo '# supercell environment settings' >> ~/.bashrc
+  echo 'export PATH=$PATH:$HOME/supercell' >> ~/.bashrc
+  echo 'export BABEL_DATADIR=$HOME/supercell' >> ~/.bashrc
+2. bash
+
+
 # Google Colaboratory
 ## Install (supercell)
 
