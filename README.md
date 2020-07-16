@@ -1,6 +1,9 @@
 # supercell-examples
 
 
+# Ubuntu 18.04 LTS or Debian 10.0
+
+
 ## Install (supercell)
 0. sudo apt update
   sudo apt install -y git wget openbabel
