@@ -2,8 +2,6 @@
 
 
 # Google Colaboratory
--
-
 ## Install (supercell)
 
 
