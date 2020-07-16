@@ -79,8 +79,6 @@
 
 # Google Colaboratory
 ## Install (supercell)
-
-
 	!apt update
 	!apt install -y git wget openbabel
 	%cd /content
@@ -91,8 +89,6 @@
 
 
 ## Install (cif2cell-informal)
-
-
 	!apt update
 	!apt install -y git python python-setuptools python-dev
 	%cd /content
@@ -106,8 +102,9 @@
 
 
 ## Install (lammps)
-
-
+	!apt update
+	!apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
+	%cd /content
 	!wget https://lammps.sandia.gov/tars/lammps-stable.tar.gz
 	!tar zxvf lammps-stable.tar.gz
 	%cd lammps-3Mar20
@@ -118,8 +115,6 @@
 
 
 ## Examples (FeCrW, lammps)
-
-
 	%cd /content
 	!git clone https://github.com/by-student-2017/supercell-examples.git
 	!cp -r /content/supercell-examples/* /content/supercell/data/examples
@@ -133,8 +128,6 @@
 
 
 ## Install (PWscf)
-
-
 	!apt update
 	!apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
 	%cd /content
@@ -150,8 +143,6 @@
 
 
 ## Examples (PbSnTe, PWscf)
-
-
 	!apt update
 	!apt install -y git
 	%cd /content
