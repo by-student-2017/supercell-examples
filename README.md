@@ -114,6 +114,8 @@
 	%cd build 
 	!cmake -D BUILD_MPI=on -D PKG_USER-MEAMC=on -D PKG_MANYBODY=on -D PKG_MC=on ../cmake
 	!cmake --build .
+	import os
+	os.environ['PATH'] = "/content/lammps-3Mar20/build:"+os.environ['PATH']
 
 
 ## Examples (FeCrW, lammps)
