@@ -32,7 +32,8 @@ do
   done
   echo "" >> $sqsf
   
-  for j in $( ls cell_${i} | grep ".cif" | sed "s/^/cell_${i}\//g" )
+  #for j in $( ls cell_${i} | grep ".cif" | sed "s/^/cell_${i}\//g" )
+  for j in cell_${i}/*.cif
   do
     pth=`dirname $j`/`basename $j .cif`
     name=`basename $j .cif`
