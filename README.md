@@ -5,30 +5,22 @@
 
 
 ## Install (supercell)
-0. sudo apt update
-  
-  
-  sudo apt install -y git wget openbabel
-  
-  
-  cd ~
-1. git clone https://github.com/orex/supercell.git
-2. cd supercell
-3. wget https://orex.github.io/supercell/exe/supercell-linux.tar.gz
-4. tar zxvf supercell-linux.tar.gz
+1. sudo apt update
+2. sudo apt install -y git wget openbabel
+3. cd ~
+4. git clone https://github.com/orex/supercell.git
+5. cd supercell
+6. wget https://orex.github.io/supercell/exe/supercell-linux.tar.gz
+7. tar zxvf supercell-linux.tar.gz
+
 
 ## Environment settings (supercell)
 1. echo ' ' >> ~/.bashrc
-  
-  
-  echo '# supercell environment settings' >> ~/.bashrc
-  
-  
-  echo 'export PATH=$PATH:$HOME/supercell' >> ~/.bashrc
-  
-  
-  echo 'export BABEL_DATADIR=$HOME/supercell' >> ~/.bashrc
-2. bash
+2. echo '# supercell environment settings' >> ~/.bashrc
+3. echo 'export PATH=$PATH:$HOME/supercell' >> ~/.bashrc
+4. echo 'export BABEL_DATADIR=$HOME/supercell' >> ~/.bashrc
+5. bash
+
 
 ## Install (lammps)
 1. wget https://lammps.sandia.gov/tars/lammps-stable.tar.gz
@@ -41,59 +33,47 @@
 
 ## Environment settings (lammps)
 1. echo ' ' >> ~/.bashrc
-  
-  
-  echo '# lammps environment settings' >> ~/.bashrc
-  
-  
-  echo 'export PATH=$PATH:$HOME/lammps-3Mar20/build' >> ~/.bashrc
-2. bash
+2. echo '# lammps environment settings' >> ~/.bashrc
+3. echo 'export PATH=$PATH:$HOME/lammps-3Mar20/build' >> ~/.bashrc
+4. bash
 
 
 ## Examples (FeCrW)
-0. cd ~
-1. git clone https://github.com/by-student-2017/supercell-examples.git
-2. cp -r ~/supercell-examples/* ~/supercell/data/examples
-3. cd ~/supercell/data/examples/FeCrW-SQS-OPT
-4. chmod +x df_cfg_lmp.bash
-5. ./df_cfg_lmp.bash 1x1x2
-6. cat SQS-1x1x2
-7. cat result.txt
+1. cd ~
+2. git clone https://github.com/by-student-2017/supercell-examples.git
+3. cp -r ~/supercell-examples/* ~/supercell/data/examples
+4. cd ~/supercell/data/examples/FeCrW-SQS-OPT
+5. chmod +x df_cfg_lmp.bash
+6. ./df_cfg_lmp.bash 1x1x2
+7. cat SQS-1x1x2
+8. cat result.txt
 
 
 ## Install (PWscf)
 1. sudo apt update
-
-
-  sudo apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
-
-
-  cd ~
-2. wget https://github.com/QEF/q-e/archive/qe-6.4.1.tar.gz
-3. tar zxvf qe-6.4.1.tar.gz
-4. cd q-e-qe-6.4.1
-5. wget https://github.com/QEF/q-e/releases/download/qe-6.4.1/backports-6.4.1.diff
-6. patch -p1 --merge < backports-6.4.1.diff
-7. ./configure
-8. make pw
-9. sudo make install
+2. sudo apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
+3. cd ~
+4. wget https://github.com/QEF/q-e/archive/qe-6.4.1.tar.gz
+5. tar zxvf qe-6.4.1.tar.gz
+6. cd q-e-qe-6.4.1
+7. wget https://github.com/QEF/q-e/releases/download/qe-6.4.1/backports-6.4.1.diff
+8. patch -p1 --merge < backports-6.4.1.diff
+9. ./configure
+10. make pw
+11. sudo make install
 
 
 ## Examples (PbSnTe) (PWscf)
-0. sudo apt update
-
-
-  sudo apt install -y git
-
-
-  cd ~
-1. git clone https://github.com/by-student-2017/supercell-examples.git
-2. cp -r ~/supercell-examples/* ~/supercell/data/examples
-3. cd ~/supercell/data/examples/PbSnTe-SQS-OPT
-4. chmod +x df_cfg_qe.bash
-5. export OMP_NUM_THREADS=1
-6. ./df_cfg_qe.bash 1x1x2 4
-7. cat SQS-1x1x2
+1. cd ~
+2. sudo apt update
+3. sudo apt install -y git
+4. git clone https://github.com/by-student-2017/supercell-examples.git
+5. cp -r ~/supercell-examples/* ~/supercell/data/examples
+6. cd ~/supercell/data/examples/PbSnTe-SQS-OPT
+7. chmod +x df_cfg_qe.bash
+8. export OMP_NUM_THREADS=1
+9. ./df_cfg_qe.bash 1x1x2 4
+10. cat SQS-1x1x2
 
 
 # Google Colaboratory
