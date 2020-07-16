@@ -75,12 +75,12 @@ cd ${cur_path}
 awk '(NR>1){print $0}' $sqsf | sort -k2 -g > tmp1
 mn=`awk '(NR==1){print $2}' tmp1`
 awk -v em=$mn '{printf "%s  %8.5f  %8.6e  %8.6e  %8.6e  %8.6e  %8.6e  %8.6e \n",$1,$2,exp(-($2 - em)/0.0257),exp(-($2 - em)/0.0257*298/673),exp(-($2 - em)/0.0257*298/873),exp(-($2 - em)/0.0257*298/1073),exp(-($2 - em)/0.0257*298/1273),exp(-($2 - em)/0.0257*298/1873)}' tmp1 > tmp2
-es3=`gawk '{ sum += $3 }; END { print sum }' tmp2`
-es4=`gawk '{ sum += $4 }; END { print sum }' tmp2`
-es5=`gawk '{ sum += $5 }; END { print sum }' tmp2`
-es6=`gawk '{ sum += $6 }; END { print sum }' tmp2`
-es7=`gawk '{ sum += $7 }; END { print sum }' tmp2`
-es8=`gawk '{ sum += $8 }; END { print sum }' tmp2`
+es3=`awk '{ sum += $3 }; END { print sum }' tmp2`
+es4=`awk '{ sum += $4 }; END { print sum }' tmp2`
+es5=`awk '{ sum += $5 }; END { print sum }' tmp2`
+es6=`awk '{ sum += $6 }; END { print sum }' tmp2`
+es7=`awk '{ sum += $7 }; END { print sum }' tmp2`
+es8=`awk '{ sum += $8 }; END { print sum }' tmp2`
 echo "#Name of cif file | Total energy [eV] | (N(Ei)/SUM(N(Ei)))*100 at 298 K [%] | 673 K | 873 K | 1073 K | 1273 K | 1873 K" > result.txt
 awk -v esu3=$es3 -v esu4=$es4 -v esu5=$es5 -v esu6=$es6 -v esu7=$es7 -v esu8=$es8 '{printf "%s  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f  %9.5f \n",$1,$2,($3/esu3*100),($4/esu4*100),($5/esu5*100),($6/esu6*100),($7/esu7*100),($8/esu8*100)}' tmp2 >> result.txt
 cat result.txt
