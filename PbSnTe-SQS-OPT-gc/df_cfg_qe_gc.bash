@@ -24,7 +24,7 @@ for i in "${cells[@]}"
 do
   cd ${cur_path}
   sqsf="${cur_path}/SQS-$i"
-  msda="${cur_path}/SQS-MSDA-$i"
+  msdaf="${cur_path}/SQS-MSDA-$i"
   echo -ne "cfg" > $sqsf
   for k in "${latuni[@]}"
   do 
@@ -32,7 +32,7 @@ do
   done
   echo "" >> $sqsf
   
-  for j in cell_${i}/*.cif
+  for j in $( ls cell_${i} | grep ".cif" | sed "s/^/cell_${i}\//g" )
   do
     pth=`dirname $j`/`basename $j .cif`
     name=`basename $j .cif`
