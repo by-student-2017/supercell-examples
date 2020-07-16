@@ -88,6 +88,8 @@
 	%cd supercell
 	!wget https://orex.github.io/supercell/exe/supercell-linux.tar.gz
 	!tar zxvf supercell-linux.tar.gz
+	import os
+	os.environ['PATH'] = "/content/supercell:"+os.environ['PATH']
 
 
 ## Install (cif2cell-informal)
