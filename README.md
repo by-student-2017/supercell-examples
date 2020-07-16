@@ -90,7 +90,7 @@
 	!tar zxvf supercell-linux.tar.gz
 	import os
 	os.environ['PATH'] = "/content/supercell:"+os.environ['PATH']
-
+	os.environ['BABEL_DATADIR'] = "/content/supercell"
 
 ## Install (cif2cell-informal)
 	!apt update
