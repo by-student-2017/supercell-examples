@@ -130,7 +130,6 @@
 	os.environ["OMP_NUM_THREADS"] = "1,1"
 	os.environ["MKL_NUM_THREADS"] = "1"
 	!./df_cfg_lmp_gc.bash 1x1x2 FeCrW.cif
-	!cat SQS-1x1x2
 
 
 ## Install (PWscf)
@@ -161,4 +160,3 @@
 	os.environ["OMP_NUM_THREADS"] = "1,1"
 	os.environ["MKL_NUM_THREADS"] = "1"
 	!./df_cfg_qe_gc.bash 1x1x2 PbSnTe2.cif
-	!cat SQS-1x1x2
