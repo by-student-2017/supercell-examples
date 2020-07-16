@@ -5,9 +5,9 @@
 
 
 ## Install (supercell)
-1. sudo apt update
-2. sudo apt install -y git wget openbabel
-3. cd ~
+1. cd ~
+2. sudo apt update
+3. sudo apt install -y git wget openbabel
 4. git clone https://github.com/orex/supercell.git
 5. cd supercell
 6. wget https://orex.github.io/supercell/exe/supercell-linux.tar.gz
@@ -50,9 +50,9 @@
 
 
 ## Install (PWscf)
-1. sudo apt update
-2. sudo apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
-3. cd ~
+1. cd ~
+2. sudo apt update
+3. sudo apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
 4. wget https://github.com/QEF/q-e/archive/qe-6.4.1.tar.gz
 5. tar zxvf qe-6.4.1.tar.gz
 6. cd q-e-qe-6.4.1
