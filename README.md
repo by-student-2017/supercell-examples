@@ -3,7 +3,9 @@
 Google Colaboratory
 -
 
-Å† Install (supercell)
+## Install (supercell)
+
+
 	!apt update
 	!apt install -y git wget openbabel
 	%cd /content
@@ -13,7 +15,9 @@ Google Colaboratory
 	!tar zxvf supercell-linux.tar.gz
 
 
-Å† Install (cif2cell-informal)
+## Install (cif2cell-informal)
+
+
 	!apt update
 	!apt install -y git python python-setuptools python-dev
 	%cd /content
@@ -26,7 +30,9 @@ Google Colaboratory
 	!python2 setup.py install
 
 
-Å† Install (lammps)
+## Install (lammps)
+
+
 	!wget https://lammps.sandia.gov/tars/lammps-stable.tar.gz
 	!tar zxvf lammps-stable.tar.gz
 	%cd lammps-3Mar20
@@ -36,7 +42,9 @@ Google Colaboratory
 	!cmake --build .
 
 
-Å† Examples (FeCrW, lammps)
+## Examples (FeCrW, lammps)
+
+
 	%cd /content
 	!git clone https://github.com/by-student-2017/supercell-examples.git
 	!cp -r /content/supercell-examples/* /content/supercell/data/examples
@@ -49,7 +57,9 @@ Google Colaboratory
 	!cat SQS-1x1x2
 
 
-Å† Install (PWscf)
+## Install (PWscf)
+
+
 	!apt update
 	!apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
 	%cd /content
@@ -64,7 +74,9 @@ Google Colaboratory
 	os.environ['PATH'] = "/content/q-e-qe-6.4.1/bin:"+os.environ['PATH']
 
 
-Å† Examples (PbSnTe, PWscf)
+## Examples (PbSnTe, PWscf)
+
+
 	!apt update
 	!apt install -y git
 	%cd /content
