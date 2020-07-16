@@ -152,8 +152,8 @@
 	!apt install -y git
 	%cd /content
 	!git clone https://github.com/by-student-2017/supercell-examples.git
-	%cp -r /content/supercell-examples/* /content/supercell/data/examples
-	!cd /content/supercell/data/examples/PbSnTe-SQS-OPT-gc
+	!cp -r /content/supercell-examples/* /content/supercell/data/examples
+	%cd /content/supercell/data/examples/PbSnTe-SQS-OPT-gc
 	!chmod +x MSDA.bash
 	!chmod +x df_cfg_qe_gc.bash
 	import os
