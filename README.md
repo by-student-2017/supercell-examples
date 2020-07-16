@@ -23,12 +23,13 @@
 
 
 ## Install (lammps)
-1. wget https://lammps.sandia.gov/tars/lammps-stable.tar.gz
-2. tar zxvf lammps-stable.tar.gz
-3. cd lammps-3Mar20
-4. mkdir build ; cd build 
-5. cmake -D BUILD_MPI=on -D PKG_USER-MEAMC=on -D PKG_MANYBODY=on -D PKG_MC=on ../cmake
-6. cmake --build .
+1. cd ~
+2. wget https://lammps.sandia.gov/tars/lammps-stable.tar.gz
+3. tar zxvf lammps-stable.tar.gz
+4. cd lammps-3Mar20
+5. mkdir build ; cd build 
+6. cmake -D BUILD_MPI=on -D PKG_USER-MEAMC=on -D PKG_MANYBODY=on -D PKG_MC=on ../cmake
+7. cmake --build .
 
 
 ## Environment settings (lammps)
