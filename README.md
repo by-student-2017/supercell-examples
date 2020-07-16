@@ -30,7 +30,10 @@
 
 
 ## Environment settings (lammps)
-1. echo 'export PATH=$PATH:$HOME/lammps-3Mar20/build'
+1. echo ' ' >> ~/.bashrc
+  echo '# lammps environment settings' >> ~/.bashrc
+  echo 'export PATH=$PATH:$HOME/lammps-3Mar20/build' >> ~/.bashrc
+2. bash
 
 
 ## Examples (FeCrW)
