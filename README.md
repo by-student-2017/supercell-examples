@@ -6,7 +6,11 @@
 
 ## Install (supercell)
 0. sudo apt update
+  
+  
   sudo apt install -y git wget openbabel
+  
+  
   cd ~
 1. git clone https://github.com/orex/supercell.git
 2. cd supercell
@@ -15,8 +19,14 @@
 
 ## Environment settings (supercell)
 1. echo ' ' >> ~/.bashrc
+  
+  
   echo '# supercell environment settings' >> ~/.bashrc
+  
+  
   echo 'export PATH=$PATH:$HOME/supercell' >> ~/.bashrc
+  
+  
   echo 'export BABEL_DATADIR=$HOME/supercell' >> ~/.bashrc
 2. bash
 
@@ -31,7 +41,11 @@
 
 ## Environment settings (lammps)
 1. echo ' ' >> ~/.bashrc
+  
+  
   echo '# lammps environment settings' >> ~/.bashrc
+  
+  
   echo 'export PATH=$PATH:$HOME/lammps-3Mar20/build' >> ~/.bashrc
 2. bash
 
@@ -43,17 +57,17 @@
 3. cd ~/supercell/data/examples/FeCrW-SQS-OPT
 4. chmod +x df_cfg_lmp.bash
 5. ./df_cfg_lmp.bash 1x1x2
-  (or ./df_cfg_lmp.bash 2x2x1, etc)
 6. cat SQS-1x1x2
-  (or cat SQS-2x2x1, etc)
 7. cat result.txt
-(you can get Total energy [eV] for every *.cif)
-(FeCrW-SQS-OPT is minimize version)
 
 
 ## Install (PWscf)
 1. sudo apt update
+
+
   sudo apt install -y gcc g++ build-essential gfortran libopenblas-dev libfftw3-dev libopenmpi-dev wget
+
+
   cd ~
 2. wget https://github.com/QEF/q-e/archive/qe-6.4.1.tar.gz
 3. tar zxvf qe-6.4.1.tar.gz
@@ -67,7 +81,11 @@
 
 ## Examples (PbSnTe) (PWscf)
 0. sudo apt update
+
+
   sudo apt install -y git
+
+
   cd ~
 1. git clone https://github.com/by-student-2017/supercell-examples.git
 2. cp -r ~/supercell-examples/* ~/supercell/data/examples
@@ -75,7 +93,6 @@
 4. chmod +x df_cfg_qe.bash
 5. export OMP_NUM_THREADS=1
 6. ./df_cfg_qe.bash 1x1x2 4
-  (last number is number of cpus)
 7. cat SQS-1x1x2
 
 
