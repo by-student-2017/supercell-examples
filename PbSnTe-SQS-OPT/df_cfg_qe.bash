@@ -29,7 +29,7 @@ for i in "${cells[@]}"
 do
   cd ${cur_path}
   sqsf="${cur_path}/SQS-$i"
-  msda="${cur_path}/SQS-MSDA-$i"
+  msdaf="${cur_path}/SQS-MSDA-$i"
   echo -ne "cfg" > $sqsf
   for k in "${latuni[@]}"
   do 
