@@ -4,7 +4,8 @@ cif_name=`basename $2 .cif`
 cur_path=$PWD
 
 if [[ -z "$PRG_lammps" ]]; then
-  PRG_lammps="lammps"
+  #PRG_lammps="lammps" # sudo apt install -y lammps
+  PRG_lammps="lmp" # compile lammps-stable
 fi
 
 #cells=( 1x1x2 1x2x2 )
