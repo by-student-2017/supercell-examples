@@ -79,6 +79,9 @@
 10. cat SQS-1x1x2
 
 
+MSDA [r^2/Angstrom^2]
+
+
 # Google Colaboratory
 ## Install (supercell)
 	!apt update
