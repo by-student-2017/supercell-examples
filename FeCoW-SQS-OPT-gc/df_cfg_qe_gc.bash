@@ -59,7 +59,7 @@ do
       cat pw_tmp.vc-relax.in | awk -v lnx=$ln -v t=$k '{if(NR==lnx){printf "  A = %9.5f \n",$3*t}else{print $0}}' > pw.in
       mpirun -np 2 --allow-run-as-root ${PRG_qe} < pw.in | tee pw.out
       cr_Ry=`grep "  total energy  " pw.out | tail -1 | sed 's/.*=//g' | sed 's/Ry//g'`
-      cr=`echo "${cr_Ry}*13.6058" | bc -l | awk '{printf "%15.5f",$0}'`
+      cr=`echo "${cr_Ry}" | awk '{printf "%15.5f",$0*13.6058}'`
       echo -ne "\t$cr" >> $sqsf
       cm=`${cur_path}/MSDA.bash`
       echo -ne "\t$cr $cm" >> $msdaf
