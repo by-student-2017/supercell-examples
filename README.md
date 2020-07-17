@@ -79,7 +79,7 @@
 10. cat SQS-1x1x2
 
 
-MSDA [r^2/Angstrom^2]
+MSDA [r^2/Angstrom^2] * 100 * 100 = MSDA [r^2/pm^2]
 
 
 # Google Colaboratory
@@ -165,4 +165,4 @@ MSDA [r^2/Angstrom^2]
 	!./df_cfg_qe_gc.bash 1x1x2 FeCoW.cif
 
 
-MSDA [r^2/Angstrom^2]
+MSDA [r^2/Angstrom^2] * 100 * 100 = MSDA [r^2/pm^2]

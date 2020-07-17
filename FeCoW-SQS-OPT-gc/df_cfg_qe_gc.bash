@@ -87,6 +87,7 @@ cat result.txt
 #
 echo "---------------------------------------------------------------"
 cat $msdaf | sort -k2 -g > result_msda.txt
+sed -i 1i"#Name of cif file | Total energy [eV] | MSDA [r^2/Angstrom^2]" result_msda.txt
 cat result_msda.txt
 #
 rm tmp1 tmp2
