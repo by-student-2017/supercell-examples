@@ -26,6 +26,7 @@ do
   sqsf="${cur_path}/SQS-$i"
   msdaf="${cur_path}/SQS-MSDA-$i"
   echo -ne "cfg" > $sqsf
+  echo -n > $msdaf
   for k in "${latuni[@]}"
   do 
     echo -ne "\t$k" >> $sqsf
@@ -61,7 +62,7 @@ do
       cr=`echo "${cr_Ry}*13.6058" | bc -l | awk '{printf "%15.5f",$0}'`
       echo -ne "\t$cr" >> $sqsf
       cm=`${cur_path}/MSDA.bash`
-      echo -ne "\t$cf $cm" >> $msdaf
+      echo -ne "\t$cr $cm" >> $msdaf
     done
     echo "" >> $sqsf
     echo "" >> $msdaf
