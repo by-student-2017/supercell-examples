@@ -147,16 +147,19 @@
 	os.environ['PATH'] = "/content/q-e-qe-6.4.1/bin:"+os.environ['PATH']
 
 
-## Examples (PbSnTe, PWscf)
+## Examples (FeCoW, PWscf)
 	!apt update
 	!apt install -y git
 	%cd /content
 	!git clone https://github.com/by-student-2017/supercell-examples.git
 	!cp -r /content/supercell-examples/* /content/supercell/data/examples
-	%cd /content/supercell/data/examples/PbSnTe-SQS-OPT-gc
+	%cd /content/supercell/data/examples/FeCoW-SQS-OPT-gc
 	!chmod +x MSDA.bash
 	!chmod +x df_cfg_qe_gc.bash
 	import os
 	os.environ["OMP_NUM_THREADS"] = "1,1"
 	os.environ["MKL_NUM_THREADS"] = "1"
-	!./df_cfg_qe_gc.bash 1x1x2 PbSnTe2.cif
+	!./df_cfg_qe_gc.bash 1x1x2 FeCoW.cif
+
+
+MSDA [r^2/Angstrom^2]

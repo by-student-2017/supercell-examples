@@ -1,0 +1,16 @@
+[ENTER EXAMPLE DESCRIPTION HERE]
+Supercell should be installed. PWscf should be in PATH. Run script df_cfg_qe_gc.bash.
+
+!./df_cfg_qe_gc.bash XxYxZ N
+
+e.g., 1x1x2 supercell and 4 CPUs
+
+!./df_cfg_qe_gc.bash 1x1x2 4
+
+The command used to generate supercells in this case is:
+
+!supercell -i PbSnTe.cif -s 1x1x2 -m -v 2 -o [OUTPUT DIRECTORY]/PbSnTe_1x1x2 &
+
+Note that the [OUTPUT DIRECTORY] should exist when running the command.
+The analysis is then performed with the PWscf program.
+
