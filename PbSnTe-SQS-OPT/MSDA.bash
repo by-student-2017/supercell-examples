@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lp=`grep "lattice parameter" pw.out | tail -1 | awk '{print $5}'`
+lp=`grep "lattice parameter" pw.out | tail -1 | awk '{print $5*0.529177}'`
 x=`grep -A 3 "crystal axes:" pw.out | sed 's/.*= (//' | sed 's/)//' | tail -3 | awk '{m+=$1} END{print m;}'`
 y=`grep -A 3 "crystal axes:" pw.out | sed 's/.*= (//' | sed 's/)//' | tail -3 | awk '{m+=$2} END{print m;}'`
 z=`grep -A 3 "crystal axes:" pw.out | sed 's/.*= (//' | sed 's/)//' | tail -3 | awk '{m+=$3} END{print m;}'`
