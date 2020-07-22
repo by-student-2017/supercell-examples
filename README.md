@@ -22,6 +22,17 @@
 5. bash
 
 
+## Install (cif2cell-informal)
+1. sudo apt install -y git python python-setuptools python-dev
+2. git clone https://github.com/by-student-2017/cif2cell-informal.git
+3. cd cif2cell-informal
+4. tar zxvf PyCifRW-3.3.tar.gz
+5. cd PyCifRW-3.3
+6. sudo python setup.py install
+7. cd ..
+8. sudo python setup.py install
+
+
 ## Install (lammps)
 1. cd ~
 2. sudo apt update
@@ -94,6 +105,7 @@ MSDA [r^2/Angstrom^2] * 100 * 100 = MSDA [r^2/pm^2]
 	import os
 	os.environ['PATH'] = "/content/supercell:"+os.environ['PATH']
 	os.environ['BABEL_DATADIR'] = "/content/supercell"
+
 
 ## Install (cif2cell-informal)
 	!apt update
